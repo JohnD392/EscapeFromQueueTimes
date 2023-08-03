@@ -4,7 +4,8 @@ using UnityEngine.InputSystem;
 public class CharacterStateMachine : MonoBehaviour {
     ICharacterState currentState;
 
-    public InputAction jump;
+    [SerializeField]
+    public InputActionReference jump;
 
     static ICharacterState idleState = new IdleState();
     static ICharacterState movementState = new MovementState();
