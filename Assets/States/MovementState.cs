@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class MovementState : ICharacterState {
-    float acceleration = 10f;
+    float acceleration = 18f;
     float maxSpeed = 12f;
 
     public void OnEnterState(GameObject character) { }

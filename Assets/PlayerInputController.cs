@@ -8,10 +8,6 @@ public class PlayerInputController : MonoBehaviour {
     public InputActionReference rightInputActionReference;
     public InputActionReference forwardInputActionReference;
     public InputActionReference backInputActionReference;
-    CharacterStateMachine csm;
-    public void Start() {
-        csm = GetComponent<CharacterStateMachine>();
-    }
     public Vector3 GetInputVector() {
         Vector3 inputVec = Vector3.zero;
         if(leftInputActionReference.action.IsPressed()) inputVec -= transform.right;
