@@ -2,21 +2,16 @@ using UnityEngine;
 
 public class MovementState : ICharacterState {
     float acceleration = 10f;
+    float maxSpeed = 12f;
 
     public void OnEnterState(GameObject character) { }
     public void OnExitState(GameObject character) { }
     public void Tick(GameObject character) {
-        this.SetVelocity(character);
-        this.Jump(character);
+        SetVelocity(character, character.GetComponent<PlayerInputController>().GetInputVector());
+        character.GetComponent<CharacterStateMachine>().Jump();
     }
-    public void Jump(GameObject character) {
-        CharacterStateMachine csm = character.GetComponent<CharacterStateMachine>();
-        float isJumping = csm.jump.action.ReadValue<float>();
-        Debug.Log("IsJumping: " + isJumping);
-        if (isJumping > .9f) csm.ChangeState(new JumpState());
-    }
-    public void SetVelocity(GameObject character) {
-        Vector3 direction = Vector3.forward; //TODO change to get input
+    public void SetVelocity(GameObject character, Vector3 inputVector) {
+        Vector3 direction = inputVector.normalized;
         Rigidbody rb = character.GetComponent<Rigidbody>();
 
         if (direction == Vector3.zero) {
@@ -55,5 +50,9 @@ public class MovementState : ICharacterState {
         }
 
         rb.velocity += direction * Time.deltaTime * acceleration;
+        SpeedLimit(rb);
+    }
+    public void SpeedLimit(Rigidbody rb) {
+        if(rb.velocity.magnitude > maxSpeed) rb.velocity = rb.velocity.normalized * maxSpeed;
     }
 }

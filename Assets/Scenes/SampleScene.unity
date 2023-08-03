@@ -236,6 +236,7 @@ GameObject:
   - component: {fileID: 232814687}
   - component: {fileID: 232814693}
   - component: {fileID: 232814692}
+  - component: {fileID: 232814694}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -351,7 +352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7db140e1b972fab45a460d648cee09f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jump: {fileID: -3608941933043130172, guid: 4e20dfcd2ac8f904ba689e4015ba20b4, type: 3}
+  jumpActionReference: {fileID: -3608941933043130172, guid: 4e20dfcd2ac8f904ba689e4015ba20b4, type: 3}
 --- !u!114 &232814693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -378,10 +379,26 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: New control scheme
-  m_DefaultActionMap: Normal
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Default
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &232814694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 232814686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ebae102c9cd7cb4ca7ff86c079dd76c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftInputActionReference: {fileID: -4175577836379074935, guid: 4e20dfcd2ac8f904ba689e4015ba20b4, type: 3}
+  rightInputActionReference: {fileID: 7709994433267075683, guid: 4e20dfcd2ac8f904ba689e4015ba20b4, type: 3}
+  forwardInputActionReference: {fileID: -7626436289923938159, guid: 4e20dfcd2ac8f904ba689e4015ba20b4, type: 3}
+  backInputActionReference: {fileID: -8788830824670619244, guid: 4e20dfcd2ac8f904ba689e4015ba20b4, type: 3}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
