@@ -83,7 +83,6 @@ public class MovementState : ICharacterState {
 
     public void Tick(GameObject character) {
         this.SetVelocity(character);
-        throw new System.NotImplementedException();
     }
 
     public void SetVelocity(GameObject character) {
