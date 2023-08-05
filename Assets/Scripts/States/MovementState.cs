@@ -2,13 +2,15 @@ using UnityEngine;
 
 public class MovementState : ICharacterState {
     float acceleration = 18f;
-    float maxSpeed = 12f;
+    private float maxSpeed = 12f;
 
     public void OnEnterState(GameObject character) { }
     public void OnExitState(GameObject character) { }
     public void Tick(GameObject character) {
+        CharacterStateMachine csm = character.GetComponent<CharacterStateMachine>();
         SetVelocity(character, character.GetComponent<PlayerInputController>().GetInputVector());
-        character.GetComponent<CharacterStateMachine>().Jump();
+        csm.Jump();
+        //if(!csm.IsGrounded()) csm.ChangeState(CharacterStateMachine.fallingState);
     }
     public void SetVelocity(GameObject character, Vector3 inputVector) {
         Vector3 direction = inputVector.normalized;
