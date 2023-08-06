@@ -16,8 +16,9 @@ GameObject:
   - component: {fileID: 3145713947321159118}
   - component: {fileID: 3145713947321159119}
   - component: {fileID: 3145713947321159117}
-  - component: {fileID: 1635428292799524193}
   - component: {fileID: 1859044965193515932}
+  - component: {fileID: 1635428292799524193}
+  - component: {fileID: -6307945974594560027}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -115,10 +116,10 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 70
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 1
 --- !u!114 &3145713947321159118
@@ -163,6 +164,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7db140e1b972fab45a460d648cee09f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
   jumpActionReference: {fileID: -3608941933043130172, guid: 4e20dfcd2ac8f904ba689e4015ba20b4, type: 3}
 --- !u!114 &3145713947321159117
 MonoBehaviour:
@@ -180,6 +184,20 @@ MonoBehaviour:
   rightInputActionReference: {fileID: 7709994433267075683, guid: 4e20dfcd2ac8f904ba689e4015ba20b4, type: 3}
   forwardInputActionReference: {fileID: -7626436289923938159, guid: 4e20dfcd2ac8f904ba689e4015ba20b4, type: 3}
   backInputActionReference: {fileID: -8788830824670619244, guid: 4e20dfcd2ac8f904ba689e4015ba20b4, type: 3}
+--- !u!114 &1859044965193515932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3145713947321159157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6698be81a55c8fd44abd294deea833af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCamera: {fileID: 3145713947665537247}
+  sensitivity: 12
 --- !u!114 &1635428292799524193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,7 +215,7 @@ MonoBehaviour:
   serverOnly: 0
   visible: 0
   hasSpawned: 0
---- !u!114 &1859044965193515932
+--- !u!114 &-6307945974594560027
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -206,13 +224,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 3145713947321159157}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6698be81a55c8fd44abd294deea833af, type: 3}
+  m_Script: {fileID: 11500000, guid: 83392ae5c1b731446909f252fd494ae4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCamera: {fileID: 3145713947665537247}
-  playerTransform: {fileID: 3145713947321159112}
-  maxAngle: 85
-  minAngle: -85
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  target: {fileID: 3145713947321159156}
+  clientAuthority: 0
+  syncVelocity: 1
+  clearVelocity: 0
+  velocitySensitivity: 0.1
+  syncAngularVelocity: 1
+  clearAngularVelocity: 0
+  angularVelocitySensitivity: 0.1
 --- !u!1 &3145713947665537242
 GameObject:
   m_ObjectHideFlags: 0

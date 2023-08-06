@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Mirror;
 
-public class CharacterStateMachine : MonoBehaviour {
+public class CharacterStateMachine : NetworkBehaviour {
     ICharacterState currentState;
 
     [SerializeField]
@@ -21,8 +22,8 @@ public class CharacterStateMachine : MonoBehaviour {
         newState.OnEnterState(gameObject);
     }
 
-    public void Update() {
-        currentState.Tick(gameObject);
+    public void FixedUpdate() {
+        if(isLocalPlayer) currentState.Tick(gameObject);
     }
 
     public void Start() {
