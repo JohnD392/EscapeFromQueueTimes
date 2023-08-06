@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class MovementController : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 8f;
-    [SerializeField] float lookSensitivity = 100f;
+    [SerializeField] float lookSensitivity = 0.2f;
     [SerializeField] float jumpForce = 5f;
 
     Rigidbody rigidBody;
