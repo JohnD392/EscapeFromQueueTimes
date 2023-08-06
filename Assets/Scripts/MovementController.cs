@@ -11,10 +11,13 @@ public class MovementController : MonoBehaviour
 
     Rigidbody rigidBody;
     BoxCollider boxCollider;
+    CapsuleCollider capsuleCollider;
     Camera playerCamera;
 
     Vector2 moveInputVector;
     Vector2 lookInputVector;
+
+    bool isGrounded = true;
 
     public Vector3 ClampViewAngle(Transform playerCamera)
     {
@@ -60,7 +63,11 @@ public class MovementController : MonoBehaviour
 
     void Jump()
     {
-        rigidBody.velocity = new Vector3(rigidBody.velocity.x, jumpForce, rigidBody.velocity.z);
+        if (isGrounded)
+        {
+            rigidBody.velocity = new Vector3(rigidBody.velocity.x, jumpForce, rigidBody.velocity.z);
+            isGrounded = false;
+        }
     }
 
     void OnMove(InputValue value)
@@ -78,6 +85,14 @@ public class MovementController : MonoBehaviour
         if (value.isPressed)
         {
             Jump();
+        }
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.gameObject.transform.tag == "Ground")
+        {
+            isGrounded = true;
         }
     }
 }
