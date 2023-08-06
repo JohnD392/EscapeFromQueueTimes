@@ -16,7 +16,7 @@ public class JumpState : ICharacterState {
     }
     public void Tick(GameObject character) {
         // If falling, re-enable jump
-        if (Vector3.Dot(character.GetComponent<Rigidbody>().velocity, Vector3.down) > 0f) {
+        if (-character.GetComponent<Rigidbody>().velocity.y > 0f) {
             character.GetComponent<CharacterStateMachine>().ChangeState(CharacterStateMachine.shmovementState);
         }
     }
