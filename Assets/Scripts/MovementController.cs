@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,8 +8,6 @@ public class MovementController : MonoBehaviour
     [SerializeField] float jumpForce = 5f;
 
     Rigidbody rigidBody;
-    BoxCollider boxCollider;
-    CapsuleCollider capsuleCollider;
     Camera playerCamera;
 
     Vector2 moveInputVector;
@@ -37,7 +33,6 @@ public class MovementController : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         rigidBody = GetComponent<Rigidbody>();
-        boxCollider = GetComponent<BoxCollider>();
         playerCamera = GetComponentInChildren<Camera>();
     }
 

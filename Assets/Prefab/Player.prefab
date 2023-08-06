@@ -14,11 +14,11 @@ GameObject:
   - component: {fileID: 3145713947321159115}
   - component: {fileID: 3145713947321159156}
   - component: {fileID: 3145713947321159118}
-  - component: {fileID: 3145713947321159119}
-  - component: {fileID: 3145713947321159117}
-  - component: {fileID: 1859044965193515932}
   - component: {fileID: 1635428292799524193}
   - component: {fileID: -6307945974594560027}
+  - component: {fileID: 8294841461080062791}
+  - component: {fileID: 8827361155922619971}
+  - component: {fileID: 7501621148610443999}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -152,52 +152,6 @@ MonoBehaviour:
   m_DefaultActionMap: Default
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &3145713947321159119
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3145713947321159157}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7db140e1b972fab45a460d648cee09f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncDirection: 0
-  syncMode: 0
-  syncInterval: 0
-  jumpActionReference: {fileID: -3608941933043130172, guid: 4e20dfcd2ac8f904ba689e4015ba20b4, type: 3}
---- !u!114 &3145713947321159117
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3145713947321159157}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ebae102c9cd7cb4ca7ff86c079dd76c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leftInputActionReference: {fileID: -4175577836379074935, guid: 4e20dfcd2ac8f904ba689e4015ba20b4, type: 3}
-  rightInputActionReference: {fileID: 7709994433267075683, guid: 4e20dfcd2ac8f904ba689e4015ba20b4, type: 3}
-  forwardInputActionReference: {fileID: -7626436289923938159, guid: 4e20dfcd2ac8f904ba689e4015ba20b4, type: 3}
-  backInputActionReference: {fileID: -8788830824670619244, guid: 4e20dfcd2ac8f904ba689e4015ba20b4, type: 3}
---- !u!114 &1859044965193515932
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3145713947321159157}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6698be81a55c8fd44abd294deea833af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerCamera: {fileID: 3145713947665537247}
-  sensitivity: 12
 --- !u!114 &1635428292799524193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,6 +192,53 @@ MonoBehaviour:
   syncAngularVelocity: 1
   clearAngularVelocity: 0
   angularVelocitySensitivity: 0.1
+--- !u!114 &8294841461080062791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3145713947321159157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b11a72bedf4cf645a69ac6a6b61b708, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 8
+  lookSensitivity: 0.2
+  jumpForce: 5
+--- !u!114 &8827361155922619971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3145713947321159157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db140e1b972fab45a460d648cee09f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  jumpActionReference: {fileID: -4654044633253183585, guid: bd82d24a9fef50d449cb007b54ddfc0e, type: 3}
+--- !u!114 &7501621148610443999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3145713947321159157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5c3ec7ff7090174881b4f3ad069c409, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftInputActionReference: {fileID: 0}
+  rightInputActionReference: {fileID: 0}
+  forwardInputActionReference: {fileID: 0}
+  backInputActionReference: {fileID: 0}
 --- !u!1 &3145713947665537242
 GameObject:
   m_ObjectHideFlags: 0
