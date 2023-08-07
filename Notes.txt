@@ -120,3 +120,17 @@ Workbench
 		Supplies all currently available items for customization
 
 Presets
+
+
+
+
+
+
+------------------------- DISCUSSION NOTES ----------------------------
+Ideas:
+	Security - Pay a percentage daily to protect your stash. 
+		Takes $ out of the economy
+		Applies a soft ceiling to progression
+		Pseudo wipe
+
+
