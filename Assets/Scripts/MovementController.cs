@@ -65,16 +65,19 @@ public class MovementController : MonoBehaviour
         }
     }
 
+    // Called by InputSystem on the Player prefab via SendMessage()
     void OnMove(InputValue value)
     {
         moveInputVector = value.Get<Vector2>();
     }
 
+    // Called by InputSystem on the Player prefab via SendMessage()
     void OnLook(InputValue value)
     {
         lookInputVector = value.Get<Vector2>();
     }
 
+    // Called by InputSystem on the Player prefab via SendMessage()
     void OnJump(InputValue value)
     {
         if (value.isPressed)
@@ -83,6 +86,7 @@ public class MovementController : MonoBehaviour
         }
     }
 
+    // Called when an attached Collider contacts another Collider
     void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.gameObject.transform.tag == "Ground")

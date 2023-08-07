@@ -1,0 +1,36 @@
+This document is intended to be a dump for ideas, discussions, etc.
+
+Topics:
+
+Maps
+	Existing worlds or raids?
+	Spawn system?
+	Extraction System?
+
+Character control
+	Faster than tarkov
+
+Shooting
+	Bullet damage
+
+Health
+	TTK
+	Healing timing, animations
+	Healing types - Broken bones, heavy/light bleeds, concussion, etc.
+
+Loot
+	Player guided?
+	Flea market?
+
+Visual style
+	Realistic vs stylized
+		Realism Pros:
+			Realism may add to immersion
+		Realism Cons:
+			Very difficult to create, external assets may not conform to style
+		Stylized Pros:
+			Much faster to create
+			Faster performance
+		Stylized Cons:
+			Difficult to find!
+			
