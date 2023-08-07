@@ -1,7 +1,5 @@
 This document is intended to be a dump for ideas, discussions, etc.
 
-Topics:
-
 Maps
 	Existing worlds or raids?
 	Spawn system?
@@ -12,6 +10,9 @@ Character control
 
 Shooting
 	Bullet damage
+	Bullet traveltime
+	Recoil
+	Reload time
 
 Health
 	TTK
@@ -25,12 +26,97 @@ Loot
 Visual style
 	Realistic vs stylized
 		Realism Pros:
-			Realism may add to immersion
+			Realism adds to immersion
 		Realism Cons:
 			Very difficult to create, external assets may not conform to style
-		Stylized Pros:
-			Much faster to create
-			Faster performance
-		Stylized Cons:
-			Difficult to find!
-			
+			Nonperformant
+		Opposites apply to stylized, though it can be hard to find a good style
+
+
+EFT Feature list
+Home - Enter raid / Character / Trading / Hideout
+	J - I have the sense that all of these can be handled in FPP. You start as your Character
+	in the hideout, and can navigate QUICKLY to others' hideouts, traders, flea market, 
+	or raid. I can't underemphasize the importance of quick and smooth transitions here.
+
+Character - 
+	Stash - 
+		Fixed size until hideout is upgraded. Gets quite expensive.
+		Auto sort/filters 	J - seem kinda weak
+		Buy/Sell/Tasks tabs. J - Buy/Sell tab is pointless and stupid. If i click something on the trader's end i clearly want to buy it, not sell it.
+
+	Skills -
+		52 different skills 	J - with apparently no purpose whatsoever except to make no-lifers broken as fuck
+		69 "Mastering"s for each gun. Don't even know what that means
+		J - I hate these.
+
+	Maps - 
+		J - Did anyone know this exists? EFT in-game maps are awful
+
+	Overall -
+		Statistics about a bunch of shit. J - Pretty neat IMO, though largely inconsequential
+
+Traders - 
+	8 Traders
+	3 Currencies
+	4 Levels of progression each
+	1 Reputation level each
+	Tasks may be obtained from each at differing entrypoints
+	Player may sell different sets of items for different prices. Therapist sells for most, fence buys everything for cheapest, etc.
+	Player may buy set or nearly infinite amounts of each item for (mostly) static prices
+	Trader tracks money spent/sold by player, influences level of trader. J - Highly exploitable, not my favorite
+	Some trader items are locked behind tasks (good ammo, guns)
+	Makes requests to determine the prices of items, causes poor item price load times. J - Is it really so expensive to make this call when you enter the trader tab for every trader?
+
+Flea Market - 
+	Locked to level 15
+	Sorts all items into categories, e.g. gear, weapons, ammo, provisions, etc.
+	Selecting an item shows all listings for that item in a long list
+	Some items are banned, best ammo, best guns, etc.
+	Tax system 		J - I don't fully understand it. Some tax is more than the item itself for exploitation reasons? nerfs? not sure.
+	Limited to 2 items at a time. incentivizes undercutting perhaps?
+	Offers
+
+
+Items - 
+	Barter items
+	Gear
+	Weapon Parts and mods
+	Weapons
+	Ammo
+	Provisions
+	Meds
+	Keys
+	Special equipment - markers, radio repeaters, etc.
+	Maps
+	Money
+
+
+Hideout - 
+	Air filter
+	Bed
+	bitcoin farm
+	Booze generator
+	Defective Wall
+	Heating
+	Lavatory
+	Lights
+	Nutrition unit
+	Med station
+	Power
+	Scav case
+	Security
+	shooting range
+	Solar Power
+	Stash
+	Water collcetor
+	Workbench
+	Vents
+
+Workbench
+	Edit Presets
+		Supplies all potentially available items for total customization of weaponry
+	Modding
+		Supplies all currently available items for customization
+
+Presets
