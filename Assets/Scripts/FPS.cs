@@ -1,13 +1,25 @@
 using UnityEngine;
-using TMPro;
+using System.Collections;
 
-public class FPS : MonoBehaviour {
-    float deltaTime = 0f;
-    public TextMeshProUGUI text;
-    void Update() {
-        deltaTime += (Time.deltaTime - deltaTime) * 0.1f;
-        float msec = deltaTime * 1000.0f;
-        float fps = 1.0f / deltaTime;
-        text.text = string.Format("{0:0.0} ms ({1:0.} fps)", msec, fps);
+public class Fps : MonoBehaviour
+{
+    private float fps;
+    private float ms;
+
+    private IEnumerator Start()
+    {
+        GUI.depth = 2;
+        while (true)
+        {
+            ms = Time.unscaledDeltaTime * 1000f;
+            fps = 1f / Time.unscaledDeltaTime;
+            yield return new WaitForSeconds(0.2f);
+        }
+    }
+
+    private void OnGUI()
+    {
+
+        GUI.Label(new Rect(5, Screen.height - 25, 100, 25), ms.ToString("F2") + " ms " + Mathf.Round(fps) + " fps");
     }
 }
