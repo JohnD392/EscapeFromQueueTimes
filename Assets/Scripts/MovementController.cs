@@ -4,8 +4,8 @@ using UnityEngine.InputSystem;
 public class MovementController : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 8f;
-    [SerializeField] float lookSensitivity = 0.2f;
-    [SerializeField] float jumpForce = 5f;
+    [SerializeField] float lookSensitivity = 0.1f;
+    [SerializeField] float jumpForce = 25f;
 
     Rigidbody rigidBody;
     Camera playerCamera;
@@ -39,13 +39,23 @@ public class MovementController : MonoBehaviour
     void Update()
     {
         Move();
+    }
+
+    private void LateUpdate()
+    {
         Look();
     }
 
     void Move()
     {
-        Vector3 movementDelta = new Vector3(moveInputVector.x * moveSpeed * Time.deltaTime, 0, moveInputVector.y * moveSpeed * Time.deltaTime);
-        transform.Translate(movementDelta);
+        Vector3 inputDirection = new Vector3(moveInputVector.x, 0, moveInputVector.y);      // input direction
+        Vector3 worldSceneDirection = transform.TransformDirection(inputDirection);         // world space direction
+
+        float velocityX = worldSceneDirection.x * moveSpeed;
+        float velocityY = rigidBody.velocity.y;
+        float velocityZ = worldSceneDirection.z * moveSpeed;
+
+        rigidBody.velocity = new Vector3(velocityX, velocityY, velocityZ);
     }
 
     void Look()
@@ -53,7 +63,9 @@ public class MovementController : MonoBehaviour
         Vector2 delta = lookInputVector * lookSensitivity;
         playerCamera.transform.Rotate(-delta.y, 0f, 0f);
         playerCamera.transform.localEulerAngles = ClampViewAngle(playerCamera.transform);
-        transform.Rotate(new Vector3(0f, delta.x, 0f));
+        Quaternion rigidRot = rigidBody.rotation;
+        Quaternion deltaRot = Quaternion.Euler(0f, delta.x, 0f);
+        rigidBody.MoveRotation(rigidRot * deltaRot);
     }
 
     void Jump()
