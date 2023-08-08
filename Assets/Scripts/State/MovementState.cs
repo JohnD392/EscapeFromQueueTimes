@@ -2,17 +2,18 @@ using UnityEngine;
 
 public class MovementState : ICharacterState {
     float acceleration = 18f;
-    private float maxSpeed = 12f;
+    private float maxSpeed = 9f;
 
     public void OnEnterState(GameObject character) { }
     public void OnExitState(GameObject character) { }
     public void Tick(GameObject character) {
-        CharacterStateMachine csm = character.GetComponent<CharacterStateMachine>();
-        SetVelocity(character, character.GetComponent<PlayerInputController>().GetInputVector());
-        csm.Jump();
-        //if(!csm.IsGrounded()) csm.ChangeState(CharacterStateMachine.fallingState);	
+        Vector2 moveVec = character.GetComponent<PlayerInputReader>().moveVec;
+        Vector3 moveInput = new Vector3(moveVec.x, 0f, moveVec.y);
+        SetVelocity(character, character.transform.TransformDirection(moveInput));
+        //character.GetComponent<Rigidbody>().velocity = character.transform.TransformDirection(moveInput) * maxSpeed;
     }
     public void SetVelocity(GameObject character, Vector3 inputVector) {
+        Debug.Log("Trying to move in direction: " + inputVector);
         Vector3 direction = inputVector.normalized;
         Rigidbody rb = character.GetComponent<Rigidbody>();
 

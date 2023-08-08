@@ -9,14 +9,25 @@ public class MouseLook : MonoBehaviour {
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    void LateUpdate() {
-        Vector2 delta = Mouse.current.delta.ReadValue() * sensitivity * Time.deltaTime;
-        playerCamera.Rotate(new Vector3(-delta.y, 0f, 0f));
-        playerCamera.localEulerAngles = ClampViewAngle(playerCamera);
+    private void Update() {
+        RotatePlayer();        
+    }
 
+    void LateUpdate() {
+        RotateCamera();    
+    }
+
+    void RotatePlayer() {
+        Vector2 delta = Mouse.current.delta.ReadValue() * sensitivity;
         float rotationAmount = delta.x;
         Quaternion deltaRotation = Quaternion.Euler(Vector3.up * rotationAmount);
         GetComponent<Rigidbody>().MoveRotation(GetComponent<Rigidbody>().rotation * deltaRotation);
+    }
+
+    void RotateCamera() {
+        Vector2 delta = Mouse.current.delta.ReadValue() * sensitivity;
+        playerCamera.Rotate(new Vector3(-delta.y, 0f, 0f));
+        playerCamera.localEulerAngles = ClampViewAngle(playerCamera);
     }
 
     public Vector3 ClampViewAngle(Transform playerCamera) {

@@ -11,6 +11,10 @@ public class CharacterStateMachine : NetworkBehaviour {
     public static ICharacterState jumpState = new JumpState();
     public static ICharacterState shmovementState = new MovementState();
 
+    public void Start() {
+        Initialize(shmovementState);
+    }
+
     public void Initialize(ICharacterState startingState) {
         currentState = startingState;
         startingState.OnEnterState(gameObject);
@@ -24,10 +28,6 @@ public class CharacterStateMachine : NetworkBehaviour {
 
     public void FixedUpdate() {
         if(isLocalPlayer) currentState.Tick(gameObject);
-    }
-
-    public void Start() {
-        Initialize(shmovementState);
     }
 
     public void Jump() {
