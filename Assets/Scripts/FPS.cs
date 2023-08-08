@@ -13,13 +13,12 @@ public class Fps : MonoBehaviour
         {
             ms = Time.unscaledDeltaTime * 1000f;
             fps = 1f / Time.unscaledDeltaTime;
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.5f);
         }
     }
 
     private void OnGUI()
     {
-
-        GUI.Label(new Rect(5, Screen.height - 25, 100, 25), ms.ToString("F2") + " ms " + Mathf.Round(fps) + " fps");
+        GUI.Label(new Rect(5, Screen.height - 25, 200, 25), ms.ToString("F2") + " ms " + Mathf.Round(fps) + " fps");
     }
 }
