@@ -14,9 +14,9 @@ public struct Magazine {
 public class Shooting : MonoBehaviour
 {
     public Transform gunBarrel;
-    public float bulletSpeed;
     public GameObject bulletPrefab;
     public Magazine mag;
+    public float bulletSpeed;
     public float lastShotTime;
     public float fireRate;
     public float timeBetweenShots;
@@ -27,6 +27,7 @@ public class Shooting : MonoBehaviour
         mag.currentAmmo = 30;
     }
 
+    // Called by inputsystem via SendMessage()
     void OnShoot(InputValue value) {
         Shoot();
     }
