@@ -11,6 +11,8 @@ public class CharacterStateMachine : NetworkBehaviour {
     public static ICharacterState jumpState = new JumpState();
     public static ICharacterState shmovementState = new MovementState();
 
+    public Transform pivotPoint;
+
     public void Start() {
         Initialize(shmovementState);
     }
@@ -33,5 +35,16 @@ public class CharacterStateMachine : NetworkBehaviour {
     public void Jump() {
         float isJumping = jumpActionReference.action.ReadValue<float>();
         if (isJumping > .9f) ChangeState(jumpState);
+    }
+
+    void OnLeanRight() {
+        if(currentState.GetType() == typeof(LeanState)) ChangeState(shmovementState);
+        else ChangeState(new LeanState(this.pivotPoint, true));
+
+    }
+
+    void OnLeanLeft() {
+        if (currentState.GetType() == typeof(LeanState)) ChangeState(shmovementState);
+        else ChangeState(new LeanState(this.pivotPoint, false));
     }
 }
