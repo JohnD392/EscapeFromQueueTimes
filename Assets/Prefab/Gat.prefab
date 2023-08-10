@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunBarrel: {fileID: 6719783139672460043}
-  bulletSpeed: 2
   bulletPrefab: {fileID: 0}
+  bulletSpeed: 2
   lastShotTime: 0
   fireRate: 0
   timeBetweenShots: 0
@@ -162,6 +162,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -4683669308469848369, guid: 368c8f7c770388f4aab63431b8a5c19a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 154d56f28420c6b42b2f1e50cca70212, type: 2}
     - target: {fileID: -3542852092398272455, guid: 368c8f7c770388f4aab63431b8a5c19a, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -178,6 +182,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -1461304994638716399, guid: 368c8f7c770388f4aab63431b8a5c19a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 154d56f28420c6b42b2f1e50cca70212, type: 2}
     - target: {fileID: -1255605710908113952, guid: 368c8f7c770388f4aab63431b8a5c19a, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -194,6 +202,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -804731622281664130, guid: 368c8f7c770388f4aab63431b8a5c19a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 50408b9aaf624724ba0d37c0d5744b62, type: 2}
     - target: {fileID: 919132149155446097, guid: 368c8f7c770388f4aab63431b8a5c19a, type: 3}
       propertyPath: m_Name
       value: GatModel
