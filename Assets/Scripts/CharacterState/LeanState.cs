@@ -9,14 +9,14 @@ public class LeanState : ICharacterState {
     MovementState movementState;
 
     public LeanState(Transform pivotPoint, bool direction) {
-        maxDeg = 30f;
+        maxDeg = 22f;
         if (direction) maxDeg = -maxDeg;
         this.pivotPoint = pivotPoint;
     }
 
     public void OnEnterState(GameObject character) {
         animationTimer = 0f;
-        movementState = new MovementState();
+        movementState = new MovementState(2.5f);
         character.GetComponent<CharacterStateMachine>().StartCoroutine(LeanCoroutine(character, pivotPoint.rotation, character.transform.rotation * Quaternion.Euler(0f, 0f, maxDeg)));
     }
 

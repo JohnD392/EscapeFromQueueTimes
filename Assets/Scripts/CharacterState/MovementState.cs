@@ -2,7 +2,15 @@ using UnityEngine;
 
 public class MovementState : ICharacterState {
     float acceleration = 10f;
-    private float maxSpeed = 4f;
+    private float maxSpeed;
+
+    public MovementState() {
+        this.maxSpeed = 4f;
+    }
+
+    public MovementState(float maxSpeed) {
+        this.maxSpeed = maxSpeed;
+    }
 
     public void OnEnterState(GameObject character) { }
     public void OnExitState(GameObject character) { }
@@ -10,7 +18,7 @@ public class MovementState : ICharacterState {
         Vector2 moveVec = character.GetComponent<PlayerInputReader>().moveVec;
         Vector3 moveInput = new Vector3(moveVec.x, 0f, moveVec.y);
         SetVelocity(character, character.transform.TransformDirection(moveInput));
-        //character.GetComponent<Rigidbody>().velocity = character.transform.TransformDirection(moveInput) * maxSpeed;
+        SpeedLimit(character.GetComponent<Rigidbody>());
     }
     public void SetVelocity(GameObject character, Vector3 inputVector) {
         Debug.Log("Trying to move in direction: " + inputVector);
@@ -53,7 +61,7 @@ public class MovementState : ICharacterState {
         }
 
         rb.velocity += direction * Time.deltaTime * acceleration;
-        SpeedLimit(rb);
+
     }
     public void SpeedLimit(Rigidbody rb) {
         if (rb.velocity.magnitude > maxSpeed) rb.velocity = rb.velocity.normalized * maxSpeed;

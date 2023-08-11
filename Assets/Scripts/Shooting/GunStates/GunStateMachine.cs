@@ -1,18 +1,19 @@
 using UnityEngine;
 
 public class GunStateMachine : MonoBehaviour {
+    // States
     public IGunState currentState;
-
+    public IGunState ADSState;
+    public IGunState HipState;
+    
+    // Fields to pass down to states
     public Transform ADSTransform;
     public Transform gunTransform;
     public Transform hipTransform;
 
-    public IGunState ADSState;
-    public IGunState HipState;
-
     public void Start() {
-        this.HipState = new HipState(hipTransform);
-        this.ADSState = new ADSState(ADSTransform);
+        HipState = new HipState(hipTransform);
+        ADSState = new ADSState(ADSTransform);
         currentState = HipState;
         currentState.OnEnterState(gameObject);
     }
