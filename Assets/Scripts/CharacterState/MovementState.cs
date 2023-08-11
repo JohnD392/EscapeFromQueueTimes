@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MovementState : ICharacterState {
     float acceleration = 10f;
-    private float maxSpeed;
+    protected float maxSpeed;
 
     public MovementState() {
         this.maxSpeed = 4f;
@@ -21,10 +21,10 @@ public class MovementState : ICharacterState {
         this.maxSpeed = 4f;
     }
 
-    public void OnEnterState(GameObject character) { }
-    public void OnExitState(GameObject character) { }
+    public virtual void OnEnterState(GameObject character) { }
+    public virtual void OnExitState(GameObject character) { }
     
-    public void Tick(GameObject character) {
+    public virtual void Tick(GameObject character) {
         Vector2 moveVec = character.GetComponent<PlayerInputReader>().moveVec;
         Vector3 moveInput = new Vector3(moveVec.x, 0f, moveVec.y);
         SetVelocity(character, character.transform.TransformDirection(moveInput), acceleration);
@@ -32,7 +32,6 @@ public class MovementState : ICharacterState {
     }
 
     public static void SetVelocity(GameObject character, Vector3 inputVector, float acceleration) {
-        Debug.Log("Trying to move in direction: " + inputVector);
         Vector3 direction = inputVector.normalized;
         Rigidbody rb = character.GetComponent<Rigidbody>();
 
