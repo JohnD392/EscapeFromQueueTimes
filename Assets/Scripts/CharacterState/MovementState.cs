@@ -6,21 +6,32 @@ public class MovementState : ICharacterState {
 
     public MovementState() {
         this.maxSpeed = 4f;
+        CharacterStateMachine.OnADS += SlowForADS; // Subscribe to OnADS event, so we can SlowForADS when OnADS happens
+        CharacterStateMachine.OnStopADS += StopSlowForADS;
     }
 
     public MovementState(float maxSpeed) {
         this.maxSpeed = maxSpeed;
     }
 
+    void SlowForADS() {
+        this.maxSpeed = 2f;
+    }
+    void StopSlowForADS() {
+        this.maxSpeed = 4f;
+    }
+
     public void OnEnterState(GameObject character) { }
     public void OnExitState(GameObject character) { }
+    
     public void Tick(GameObject character) {
         Vector2 moveVec = character.GetComponent<PlayerInputReader>().moveVec;
         Vector3 moveInput = new Vector3(moveVec.x, 0f, moveVec.y);
-        SetVelocity(character, character.transform.TransformDirection(moveInput));
-        SpeedLimit(character.GetComponent<Rigidbody>());
+        SetVelocity(character, character.transform.TransformDirection(moveInput), acceleration);
+        SpeedLimit(character.GetComponent<Rigidbody>(), maxSpeed);
     }
-    public void SetVelocity(GameObject character, Vector3 inputVector) {
+
+    public static void SetVelocity(GameObject character, Vector3 inputVector, float acceleration) {
         Debug.Log("Trying to move in direction: " + inputVector);
         Vector3 direction = inputVector.normalized;
         Rigidbody rb = character.GetComponent<Rigidbody>();
@@ -63,7 +74,7 @@ public class MovementState : ICharacterState {
         rb.velocity += direction * Time.deltaTime * acceleration;
 
     }
-    public void SpeedLimit(Rigidbody rb) {
+    public static void SpeedLimit(Rigidbody rb, float maxSpeed) {
         if (rb.velocity.magnitude > maxSpeed) rb.velocity = rb.velocity.normalized * maxSpeed;
     }
 }

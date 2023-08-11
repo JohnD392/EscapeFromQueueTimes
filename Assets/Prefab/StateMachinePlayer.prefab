@@ -72,6 +72,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 247590029582344429}
   - {fileID: 8486159171803286184}
   - {fileID: 5970827921984978305}
   m_Father: {fileID: 0}
@@ -261,8 +262,10 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
+  basePivotTransform: {fileID: 247590029582344429}
+  pivotTransform: {fileID: 8486159171803286184}
+  cameraTransform: {fileID: 3145713947665537247}
   jumpActionReference: {fileID: -4654044633253183585, guid: bd82d24a9fef50d449cb007b54ddfc0e, type: 3}
-  pivotPoint: {fileID: 8486159171803286184}
 --- !u!114 &1384547277191119486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -447,6 +450,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3145713947665537247}
+  m_Father: {fileID: 3145713947321159112}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5845912120190318666
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 247590029582344429}
+  m_Layer: 0
+  m_Name: BasePivotPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &247590029582344429
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5845912120190318666}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.118, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
   m_Father: {fileID: 3145713947321159112}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8126296850799309867

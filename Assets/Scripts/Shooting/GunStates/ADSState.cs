@@ -11,10 +11,12 @@ public class ADSState : IGunState {
         GunStateMachine gsm = character.GetComponent<GunStateMachine>();
         gsm.gunTransform.position = ADSTransform.position;
         gsm.gunTransform.rotation = ADSTransform.rotation;
+        character.GetComponent<CharacterStateMachine>().ADS();
     }
 
-    public void OnExitState(GameObject character) { }
+    public void OnExitState(GameObject character) {
+        character.GetComponent<CharacterStateMachine>().StopADS();
+    }
 
     public void Tick(GameObject character) { }
 }
-
