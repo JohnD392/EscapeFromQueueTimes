@@ -179,6 +179,10 @@ PrefabInstance:
       propertyPath: offlineScene
       value: Assets/Scenes/ObstacleCourse.unity
       objectReference: {fileID: 0}
+    - target: {fileID: 6796195768622832663, guid: a40a9af9169abdf4f9699cf31368aec6, type: 3}
+      propertyPath: playerPrefab
+      value: 
+      objectReference: {fileID: 3145713947321159157, guid: fdb4b3a8edf00d446a6e623b9dea6784, type: 3}
     - target: {fileID: 9168460441609872285, guid: a40a9af9169abdf4f9699cf31368aec6, type: 3}
       propertyPath: m_Name
       value: NetworkManager
