@@ -124,10 +124,56 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 7869873546869171050, guid: 84af24b1e290f0f4e829a7731e474f79, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: -5568371526223589888, guid: 84af24b1e290f0f4e829a7731e474f79, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 400058491563918513}
+    - targetCorrespondingSourceObject: {fileID: -5568371526223589888, guid: 84af24b1e290f0f4e829a7731e474f79, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7029889078628983920}
   m_SourcePrefab: {fileID: 100100000, guid: 84af24b1e290f0f4e829a7731e474f79, type: 3}
 --- !u!4 &371689057682473508 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 84af24b1e290f0f4e829a7731e474f79, type: 3}
   m_PrefabInstance: {fileID: 189776016001803727}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3466386184654433231 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -5568371526223589888, guid: 84af24b1e290f0f4e829a7731e474f79, type: 3}
+  m_PrefabInstance: {fileID: 189776016001803727}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &400058491563918513
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3466386184654433231}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2534964839176971238, guid: 84af24b1e290f0f4e829a7731e474f79, type: 3}
+--- !u!114 &7029889078628983920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3466386184654433231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 963fa05a05967de41a89e2672b181afe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitMarkerPrefab: {fileID: 3802602989206470974, guid: 00229c886dc5ddf42947c64507ea257c, type: 3}

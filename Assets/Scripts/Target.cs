@@ -3,8 +3,12 @@ using UnityEngine;
 public class Target : MonoBehaviour {
     public GameObject hitMarkerPrefab;
 
-    private void OnTriggerEnter(Collider other) {
-        GameObject hitMarker = Instantiate(hitMarkerPrefab, other.transform.position, Quaternion.identity);
-        Destroy(hitMarker, 3f);
+    private void OnCollisionEnter(Collision collision) {
+        Debug.Log("HIT!");
+        if (collision.gameObject.tag == "Bullet") {
+            GameObject hitMarker = Instantiate(hitMarkerPrefab, collision.transform.position, Quaternion.LookRotation(-collision.contacts[0].normal, Vector3.up));
+            Destroy(collision.gameObject);
+            Destroy(hitMarker, 3f);
+        }
     }
 }

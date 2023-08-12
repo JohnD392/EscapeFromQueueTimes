@@ -306,7 +306,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3466386184654433231, guid: 0b9b30d7fa62ec44e9349c7f455d46b2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1689993703}
+    - targetCorrespondingSourceObject: {fileID: 3466386184654433231, guid: 0b9b30d7fa62ec44e9349c7f455d46b2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1689993705}
   m_SourcePrefab: {fileID: 100100000, guid: 0b9b30d7fa62ec44e9349c7f455d46b2, type: 3}
 --- !u!1 &320605035 stripped
 GameObject:
@@ -1229,6 +1235,46 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b9b30d7fa62ec44e9349c7f455d46b2, type: 3}
+--- !u!1 &1689993699 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3466386184654433231, guid: 0b9b30d7fa62ec44e9349c7f455d46b2, type: 3}
+  m_PrefabInstance: {fileID: 313953651}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1689993703
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1689993699}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2534964839176971238, guid: 84af24b1e290f0f4e829a7731e474f79, type: 3}
+--- !u!114 &1689993705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1689993699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 963fa05a05967de41a89e2672b181afe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitMarkerPrefab: {fileID: 3802602989206470974, guid: 00229c886dc5ddf42947c64507ea257c, type: 3}
 --- !u!1 &1704595035 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8103195276919906302, guid: 39b3361deb1a3494f908be78b77d6040, type: 3}
