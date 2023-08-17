@@ -1,33 +1,34 @@
 using UnityEngine;
 
-public class GunStateMachine : MonoBehaviour {
+public class GunStateMachine {
+    // Character
+    Character character;
+
     // States
     public IGunState currentState;
-    public IGunState ADSState;
-    public IGunState HipState;
+    public static IGunState ADSState;
+    public static IGunState HipState;
     
     // Fields to pass down to states
     public Transform ADSTransform;
     public Transform gunTransform;
     public Transform hipTransform;
 
-    public void Start() {
+    public GunStateMachine(Transform ADSTransform, Transform gunTransform, Transform hipTransform, Character character) {
+        this.character = character;
+        this.ADSTransform = ADSTransform;
+        this.gunTransform = gunTransform;
+        this.hipTransform = hipTransform;
         HipState = new HipState(hipTransform);
         ADSState = new ADSState(ADSTransform);
         currentState = HipState;
-        currentState.OnEnterState(gameObject);
+        currentState.OnEnterState(character);
     }
 
     public void ChangeState(IGunState newState) {
-        currentState.OnExitState(gameObject);
+        currentState.OnExitState(character);
         currentState = newState;
-        newState.OnEnterState(gameObject);
-    }
-
-    //Triggered by inputsystem via SendMessage()
-    void OnAim() {
-        if(currentState == ADSState) ChangeState(HipState);
-        else if (currentState == HipState) ChangeState(ADSState);
+        newState.OnEnterState(character);
     }
 }
 

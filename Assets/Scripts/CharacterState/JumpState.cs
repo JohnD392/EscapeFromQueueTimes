@@ -3,7 +3,7 @@ using UnityEngine;
 public class JumpState : ICharacterState {
     public float jumpSpeed = 3f;
 
-    public void OnEnterState(GameObject character) {
+    public void OnEnterState(Character character) {
         Debug.Log("JumpState OnEnterState");
         character.GetComponent<Rigidbody>().velocity = new Vector3(
             character.GetComponent<Rigidbody>().velocity.x,
@@ -11,10 +11,10 @@ public class JumpState : ICharacterState {
             character.GetComponent<Rigidbody>().velocity.z
         );
     }
-    public void OnExitState(GameObject character) {
+    public void OnExitState(Character character) {
         Debug.Log("JumpState OnExitState");
     }
-    public void Tick(GameObject character) {
+    public void Tick(Character character) {
         // If falling, re-enable jump
         if (-character.GetComponent<Rigidbody>().velocity.y > 0f) {
             character.GetComponent<CharacterStateMachine>().ChangeState(CharacterStateMachine.shmovementState);

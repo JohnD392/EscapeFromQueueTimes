@@ -47,11 +47,10 @@ GameObject:
   - component: {fileID: 3145713947321159118}
   - component: {fileID: 1635428292799524193}
   - component: {fileID: -6307945974594560027}
-  - component: {fileID: 3739598019790008292}
   - component: {fileID: 1384547277191119486}
   - component: {fileID: 7460150872417249447}
   - component: {fileID: 6731826732077574824}
-  - component: {fileID: 2416158600824151255}
+  - component: {fileID: 5173662819689881520}
   m_Layer: 0
   m_Name: StateMachinePlayer
   m_TagString: Untagged
@@ -247,25 +246,6 @@ MonoBehaviour:
   syncAngularVelocity: 1
   clearAngularVelocity: 0
   angularVelocitySensitivity: 0.1
---- !u!114 &3739598019790008292
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3145713947321159157}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7db140e1b972fab45a460d648cee09f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncDirection: 0
-  syncMode: 0
-  syncInterval: 0
-  basePivotTransform: {fileID: 247590029582344429}
-  pivotTransform: {fileID: 8486159171803286184}
-  cameraTransform: {fileID: 3145713947665537247}
-  jumpActionReference: {fileID: -4654044633253183585, guid: bd82d24a9fef50d449cb007b54ddfc0e, type: 3}
 --- !u!114 &1384547277191119486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,7 +291,7 @@ MonoBehaviour:
   lastShotTime: 0
   fireRate: 0
   timeBetweenShots: 0.3
---- !u!114 &2416158600824151255
+--- !u!114 &5173662819689881520
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -320,12 +300,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 3145713947321159157}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c016fc68585cf8f4a817c6df26c11c93, type: 3}
+  m_Script: {fileID: 11500000, guid: 51aa26010c74b914097c086a5be0c162, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
   ADSTransform: {fileID: 8097130628600661511}
   gunTransform: {fileID: 6386265145577265690}
   hipTransform: {fileID: 5970827921984978305}
+  basePivotTransform: {fileID: 247590029582344429}
+  pivotTransform: {fileID: 8486159171803286184}
+  cameraTransform: {fileID: 3145713947665537247}
 --- !u!1 &3145713947665537242
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,22 +10,22 @@ public class CrouchState : ICharacterState {
 		maxSpeed = 3f;
 		this.basePivotTransform = basePivotTransform;
 		this.pivotTransform = pivotTransform;
-		CharacterStateMachine.OnADS += SlowForADS;
-		CharacterStateMachine.OnStopADS += StopSlowForADS;
+		Character.OnADS += SlowForADS;
+		Character.OnStopADS += StopSlowForADS;
 	}
 
-	public void OnEnterState(GameObject character) {
+	public void OnEnterState(Character character) {
 		pivotTransform.position = basePivotTransform.position - Vector3.up * .5f;
 	}
 
-	public void OnExitState(GameObject character) {
+	public void OnExitState(Character character) {
 		pivotTransform.position = basePivotTransform.position;
 	}
 
-	public void Tick(GameObject character) {
+	public void Tick(Character character) {
 		Vector2 moveVec = character.GetComponent<PlayerInputReader>().moveVec;
 		Vector3 moveInput = new Vector3(moveVec.x, 0f, moveVec.y);
-		MovementState.SetVelocity(character, character.transform.TransformDirection(moveInput), acceleration);
+		MovementState.SetVelocity(character.gameObject, character.transform.TransformDirection(moveInput), acceleration);
 		MovementState.SpeedLimit(character.GetComponent<Rigidbody>(), maxSpeed);
 	}
 

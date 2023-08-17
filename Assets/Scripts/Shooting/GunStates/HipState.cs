@@ -6,14 +6,13 @@ public class HipState : IGunState {
         this.hipPosition = hipPosition;
     }
 
-    public void OnEnterState(GameObject character) {
-        GunStateMachine gsm = character.GetComponent<GunStateMachine>();
-        gsm.gunTransform.position = hipPosition.position;
-        gsm.gunTransform.rotation = hipPosition.rotation;
+    public void OnEnterState(Character character) {
+        character.gunTransform.position = hipPosition.position;
+        character.gunTransform.rotation = hipPosition.rotation;
     }
 
-    public void OnExitState(GameObject character) { }
+    public void OnExitState(Character character) { }
 
-    public void Tick(GameObject character) { }
+    public void Tick(Character character) { }
 }
 

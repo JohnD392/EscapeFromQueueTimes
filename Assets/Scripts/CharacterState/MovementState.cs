@@ -6,8 +6,8 @@ public class MovementState : ICharacterState {
 
     public MovementState() {
         this.maxSpeed = 4f;
-        CharacterStateMachine.OnADS += SlowForADS; // Subscribe to OnADS event, so we can SlowForADS when OnADS happens
-        CharacterStateMachine.OnStopADS += StopSlowForADS;
+        Character.OnADS += SlowForADS; // Subscribe to OnADS event, so we can SlowForADS when OnADS happens
+        Character.OnStopADS += StopSlowForADS;
     }
 
     public MovementState(float maxSpeed) {
@@ -21,13 +21,13 @@ public class MovementState : ICharacterState {
         this.maxSpeed = 4f;
     }
 
-    public virtual void OnEnterState(GameObject character) { }
-    public virtual void OnExitState(GameObject character) { }
+    public virtual void OnEnterState(Character character) { }
+    public virtual void OnExitState(Character character) { }
     
-    public virtual void Tick(GameObject character) {
+    public virtual void Tick(Character character) {
         Vector2 moveVec = character.GetComponent<PlayerInputReader>().moveVec;
         Vector3 moveInput = new Vector3(moveVec.x, 0f, moveVec.y);
-        SetVelocity(character, character.transform.TransformDirection(moveInput), acceleration);
+        SetVelocity(character.gameObject, character.transform.TransformDirection(moveInput), acceleration);
         SpeedLimit(character.GetComponent<Rigidbody>(), maxSpeed);
     }
 

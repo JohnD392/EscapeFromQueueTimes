@@ -7,16 +7,15 @@ public class ADSState : IGunState {
         this.ADSTransform = ADSTransform;
     }
 
-    public void OnEnterState(GameObject character) {
-        GunStateMachine gsm = character.GetComponent<GunStateMachine>();
-        gsm.gunTransform.position = ADSTransform.position;
-        gsm.gunTransform.rotation = ADSTransform.rotation;
-        character.GetComponent<CharacterStateMachine>().ADS();
+    public void OnEnterState(Character character) {
+        character.gunTransform.position = ADSTransform.position;
+        character.gunTransform.rotation = ADSTransform.rotation;
+        character.ADS();
     }
 
-    public void OnExitState(GameObject character) {
-        character.GetComponent<CharacterStateMachine>().StopADS();
+    public void OnExitState(Character character) {
+        character.StopADS();
     }
 
-    public void Tick(GameObject character) { }
+    public void Tick(Character character) { }
 }
