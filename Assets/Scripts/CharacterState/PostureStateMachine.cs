@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CharacterStateMachine {
+public class PostureStateMachine {
 	Character character;
 
 	public ICharacterState currentState;
@@ -10,20 +10,19 @@ public class CharacterStateMachine {
 	public Transform cameraTransform;
 
 	public static ICharacterState jumpState;
-	public static ICharacterState shmovementState;
+	public static ICharacterState standingState;
 	public static ICharacterState crouchState;
 
-
-	public CharacterStateMachine(Transform basePivotTransform, Transform pivotTransform, Character character) {
+	public PostureStateMachine(Character character, Transform basePivotTransform, Transform pivotTransform) {
 		this.basePivotTransform = basePivotTransform;
 		this.pivotTransform = pivotTransform;
 		this.character = character;
 
 		jumpState = new JumpState();
-		shmovementState = new MovementState();
-		crouchState = new CrouchState(basePivotTransform, pivotTransform);
+		standingState = new StandingState(character);
+		crouchState = new CrouchState(character, basePivotTransform, pivotTransform);
 
-		Initialize(shmovementState);
+		Initialize(standingState);
 	}
 
 	public void Initialize(ICharacterState startingState) {

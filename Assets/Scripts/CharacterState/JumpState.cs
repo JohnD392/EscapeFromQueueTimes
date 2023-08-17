@@ -11,13 +11,6 @@ public class JumpState : ICharacterState {
             character.GetComponent<Rigidbody>().velocity.z
         );
     }
-    public void OnExitState(Character character) {
-        Debug.Log("JumpState OnExitState");
-    }
-    public void Tick(Character character) {
-        // If falling, re-enable jump
-        if (-character.GetComponent<Rigidbody>().velocity.y > 0f) {
-            character.GetComponent<CharacterStateMachine>().ChangeState(CharacterStateMachine.shmovementState);
-        }
-    }
+    public void OnExitState(Character character) { }
+    public void Tick(Character character) { }
 }

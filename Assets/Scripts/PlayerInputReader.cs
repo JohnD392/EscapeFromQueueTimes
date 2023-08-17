@@ -7,6 +7,5 @@ public class PlayerInputReader : MonoBehaviour
 
     void OnMove(InputValue input) {
         moveVec = input.Get<Vector2>();
-        Debug.Log("Player Move input: " + moveVec);
     }
 }

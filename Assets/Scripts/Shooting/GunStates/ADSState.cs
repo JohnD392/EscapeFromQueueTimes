@@ -10,12 +10,7 @@ public class ADSState : IGunState {
     public void OnEnterState(Character character) {
         character.gunTransform.position = ADSTransform.position;
         character.gunTransform.rotation = ADSTransform.rotation;
-        character.ADS();
     }
-
-    public void OnExitState(Character character) {
-        character.StopADS();
-    }
-
+    public void OnExitState(Character character) { }
     public void Tick(Character character) { }
 }

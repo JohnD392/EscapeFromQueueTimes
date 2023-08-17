@@ -14,7 +14,7 @@ public class GunStateMachine {
     public Transform gunTransform;
     public Transform hipTransform;
 
-    public GunStateMachine(Transform ADSTransform, Transform gunTransform, Transform hipTransform, Character character) {
+    public GunStateMachine(Character character, Transform ADSTransform, Transform gunTransform, Transform hipTransform) {
         this.character = character;
         this.ADSTransform = ADSTransform;
         this.gunTransform = gunTransform;

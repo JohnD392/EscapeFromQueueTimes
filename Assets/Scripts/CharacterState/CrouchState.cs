@@ -1,17 +1,17 @@
 using UnityEngine;
 
 public class CrouchState : ICharacterState {
+	Character character;
 	float maxSpeed;
 	float acceleration = 8f;
 	Transform basePivotTransform;
 	public Transform pivotTransform;
 
-	public CrouchState(Transform basePivotTransform, Transform pivotTransform) {
+	public CrouchState(Character character, Transform basePivotTransform, Transform pivotTransform) {
+		this.character = character;
 		maxSpeed = 3f;
 		this.basePivotTransform = basePivotTransform;
 		this.pivotTransform = pivotTransform;
-		Character.OnADS += SlowForADS;
-		Character.OnStopADS += StopSlowForADS;
 	}
 
 	public void OnEnterState(Character character) {
@@ -23,10 +23,19 @@ public class CrouchState : ICharacterState {
 	}
 
 	public void Tick(Character character) {
+		CheckADS();
 		Vector2 moveVec = character.GetComponent<PlayerInputReader>().moveVec;
 		Vector3 moveInput = new Vector3(moveVec.x, 0f, moveVec.y);
-		MovementState.SetVelocity(character.gameObject, character.transform.TransformDirection(moveInput), acceleration);
-		MovementState.SpeedLimit(character.GetComponent<Rigidbody>(), maxSpeed);
+		StandingState.SetVelocity(character.gameObject, character.transform.TransformDirection(moveInput), acceleration);
+		StandingState.SpeedLimit(character.GetComponent<Rigidbody>(), maxSpeed);
+	}
+
+	public void CheckADS() {
+		if (character.gsm.currentState == GunStateMachine.ADSState) {
+			SlowForADS();
+		} else {
+			StopSlowForADS();
+		}
 	}
 
 	void SlowForADS() {
@@ -34,7 +43,6 @@ public class CrouchState : ICharacterState {
 	}
 
 	void StopSlowForADS() {
-		maxSpeed = 3f;
+		maxSpeed = 2.1f;
 	}
-
 }

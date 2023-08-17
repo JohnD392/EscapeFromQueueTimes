@@ -1,36 +1,35 @@
 using UnityEngine;
 
-public class MovementState : ICharacterState {
+public class StandingState : ICharacterState {
+    private Character character;
     float acceleration = 10f;
     protected float maxSpeed;
 
-    public MovementState() {
+    public StandingState(Character character) {
+        this.character = character;
         this.maxSpeed = 4f;
-        Character.OnADS += SlowForADS; // Subscribe to OnADS event, so we can SlowForADS when OnADS happens
-        Character.OnStopADS += StopSlowForADS;
     }
 
-    public MovementState(float maxSpeed) {
-        this.maxSpeed = maxSpeed;
+    public virtual void OnEnterState(Character character) { }
+    public virtual void OnExitState(Character character) { }
+    public virtual void Tick(Character character) {
+        CheckADS();
+        Vector2 moveVec = character.GetComponent<PlayerInputReader>().moveVec;
+        Vector3 moveInput = new Vector3(moveVec.x, 0f, moveVec.y);
+        SetVelocity(character.gameObject, character.transform.TransformDirection(moveInput), acceleration);
+        SpeedLimit(character.GetComponent<Rigidbody>(), maxSpeed);
     }
-
+    
     void SlowForADS() {
         this.maxSpeed = 2f;
     }
     void StopSlowForADS() {
         this.maxSpeed = 4f;
     }
-
-    public virtual void OnEnterState(Character character) { }
-    public virtual void OnExitState(Character character) { }
-    
-    public virtual void Tick(Character character) {
-        Vector2 moveVec = character.GetComponent<PlayerInputReader>().moveVec;
-        Vector3 moveInput = new Vector3(moveVec.x, 0f, moveVec.y);
-        SetVelocity(character.gameObject, character.transform.TransformDirection(moveInput), acceleration);
-        SpeedLimit(character.GetComponent<Rigidbody>(), maxSpeed);
+    private void CheckADS() {
+        if (character.gsm.currentState == GunStateMachine.ADSState) SlowForADS();
+        else StopSlowForADS();
     }
-
     public static void SetVelocity(GameObject character, Vector3 inputVector, float acceleration) {
         Vector3 direction = inputVector.normalized;
         Rigidbody rb = character.GetComponent<Rigidbody>();

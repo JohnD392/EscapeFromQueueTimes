@@ -9,7 +9,7 @@ public class LeanStateMachine {
 
     public Character character;
 
-    public LeanStateMachine(Transform pivotTransform, Character character) {
+    public LeanStateMachine(Character character, Transform pivotTransform) {
         this.character = character;
         LeftLeanState = new LeftLeanState(pivotTransform, character);
         RightLeanState = new RightLeanState(pivotTransform, character);
@@ -110,8 +110,8 @@ public class StraightLeanState : ICharacterState {
             float rotationAmount = Time.unscaledDeltaTime * leanSpeed * Mathf.Sign(targetAngle - currentAngle);
             currentAngle += rotationAmount;
             pivotTransform.localRotation = Quaternion.Euler(new Vector3(0f, 0f, currentAngle));
-        }
-        else {
+        } else {
+            // Rotation is complete. Set them to the target rotation
             currentAngle = targetAngle;
             pivotTransform.localRotation = Quaternion.Euler(new Vector3(0f, 0f, currentAngle));
         }
