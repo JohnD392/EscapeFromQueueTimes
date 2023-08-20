@@ -2,17 +2,31 @@ using Mirror;
 using UnityEngine;
 
 public class Character : NetworkBehaviour {
+	// State Machines
 	public PostureStateMachine psm;
 	public LeanStateMachine lsm;
 	public GunStateMachine gsm;
 
+	// Transforms
+	public Transform cameraTransform;
+	
 	public Transform ADSTransform;
 	public Transform gunTransform;
 	public Transform hipTransform;
 
+	//Lean Transforms
 	public Transform basePivotTransform;
 	public Transform pivotTransform;
-	public Transform cameraTransform;
+
+	public Transform groundedTransform; // The point on the character from which we detect the ground
+	public float groundedRadius; // How far from the grounded transform we check for ground
+	public LayerMask groundMask;
+
+	// Movement values
+	public float maxSpeed;
+	public float acceleration;
+	public float deceleration;
+
 
     public void Start() {
 		psm = new PostureStateMachine(this, basePivotTransform, pivotTransform);
@@ -55,4 +69,14 @@ public class Character : NetworkBehaviour {
 		if (psm.currentState == PostureStateMachine.crouchState) psm.ChangeState(PostureStateMachine.standingState);
 		else psm.ChangeState(PostureStateMachine.crouchState);
 	}
+
+    private void OnDrawGizmos() {
+		Gizmos.DrawSphere(groundedTransform.position, groundedRadius);
+    }
+
+    public bool IsGrounded() {
+		// Do not return true when the character is moving upwards. They can kinda fly that way.
+		if(GetComponent<Rigidbody>().velocity.y > .1f) return false;
+		return Physics.CheckSphere(groundedTransform.position, groundedRadius, groundMask);
+    }
 }

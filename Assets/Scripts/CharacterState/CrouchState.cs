@@ -26,7 +26,7 @@ public class CrouchState : ICharacterState {
 		CheckADS();
 		Vector2 moveVec = character.GetComponent<PlayerInputReader>().moveVec;
 		Vector3 moveInput = new Vector3(moveVec.x, 0f, moveVec.y);
-		StandingState.SetVelocity(character.gameObject, character.transform.TransformDirection(moveInput), acceleration);
+		//SetVelocity(character, character.transform.TransformDirection(moveInput), acceleration);
 		StandingState.SpeedLimit(character.GetComponent<Rigidbody>(), maxSpeed);
 	}
 
