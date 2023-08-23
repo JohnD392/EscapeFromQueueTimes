@@ -1,8 +1,0 @@
-// Each #kernel tells which function to compile; you can have many kernels
-#pragma kernel Main
-
-[numthreads(128,1,1)]
-void Main (uint3 id : SV_DispatchThreadID)
-{
-
-}
