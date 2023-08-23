@@ -47,7 +47,8 @@ public class StandingState : ICharacterState {
     }
 
     public static void SpeedLimit(Rigidbody rb, float maxSpeed) {
-        if (rb.velocity.magnitude > maxSpeed) rb.velocity = rb.velocity.normalized * maxSpeed;
+        Vector3 horizontalVelocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+        if (horizontalVelocity.magnitude > maxSpeed) rb.velocity = rb.velocity.normalized * maxSpeed;
     }
     public void CheckSwapStates() {
         if(!character.IsGrounded()) character.GetComponent<PostureStateMachine>().ChangeState(PostureStateMachine.jumpState);

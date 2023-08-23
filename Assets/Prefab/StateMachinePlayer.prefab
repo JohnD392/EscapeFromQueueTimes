@@ -53,7 +53,7 @@ GameObject:
   - component: {fileID: 5173662819689881520}
   m_Layer: 0
   m_Name: StateMachinePlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -390,7 +390,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.01
-  far clip plane: 1000
+  far clip plane: 10000
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -521,7 +521,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1272903409543449032}
   - component: {fileID: 6561139592808712477}
-  - component: {fileID: 4387624330032726409}
   m_Layer: 0
   m_Name: WeaponCamera
   m_TagString: Untagged
@@ -595,14 +594,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &4387624330032726409
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6099313707430422369}
-  m_Enabled: 1
 --- !u!1 &8126296850799309867
 GameObject:
   m_ObjectHideFlags: 0
