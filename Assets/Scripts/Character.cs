@@ -1,5 +1,7 @@
-using Mirror;
+using FishNet.Connection;
+using FishNet.Object;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Character : NetworkBehaviour {
 	// State Machines
@@ -27,15 +29,26 @@ public class Character : NetworkBehaviour {
 	public float acceleration;
 	public float deceleration;
 
+	public override void OnStartClient()
+	{
+		base.OnStartClient();
+		if (!base.IsOwner)
+		{
+			gameObject.GetComponent<Character>().enabled = false;
+			gameObject.GetComponent<PlayerInput>().enabled = false;
+			gameObject.GetComponent<PlayerInputReader>().enabled = false;
+		}
+	}
 
-    public void Start() {
+
+	public void Start() {
 		psm = new PostureStateMachine(this, basePivotTransform, pivotTransform);
 		lsm = new LeanStateMachine(this, pivotTransform);
 		gsm = new GunStateMachine(this, ADSTransform, gunTransform, hipTransform);
     }
 
     public void FixedUpdate() {
-		if (isLocalPlayer) {
+		if (base.IsOwner) {
 			psm.currentState.Tick(this);
 			lsm.currentState.Tick(this);
 			gsm.currentState.Tick(this);
