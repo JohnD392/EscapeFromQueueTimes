@@ -1,4 +1,3 @@
-using FishNet.Connection;
 using FishNet.Object;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,7 +9,8 @@ public class Character : NetworkBehaviour {
 	public GunStateMachine gsm;
 
 	// Transforms
-	public Transform cameraTransform;
+	public Camera mainCamera;
+	public Camera weaponCamera;
 	
 	public Transform ADSTransform;
 	public Transform gunTransform;
@@ -32,11 +32,15 @@ public class Character : NetworkBehaviour {
 	public override void OnStartClient()
 	{
 		base.OnStartClient();
-		if (!base.IsOwner)
-		{
-			gameObject.GetComponent<Character>().enabled = false;
-			gameObject.GetComponent<PlayerInput>().enabled = false;
-			gameObject.GetComponent<PlayerInputReader>().enabled = false;
+		if (!base.IsOwner) {
+			GetComponent<Character>().enabled = false;
+			GetComponent<PlayerInput>().enabled = false;
+			GetComponent<PlayerInputReader>().enabled = false;
+			GetComponent<MouseLook>().enabled = false;
+			GetComponent<Shooting>().enabled = false;
+			mainCamera.enabled = false;
+			weaponCamera.enabled = false;
+			GetComponentInChildren<AudioListener>().enabled = false;
 		}
 	}
 

@@ -52,7 +52,7 @@ GameObject:
   - component: {fileID: 8243328903949181933}
   - component: {fileID: 4941691173304872186}
   m_Layer: 0
-  m_Name: StateMachinePlayer
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -264,10 +264,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51aa26010c74b914097c086a5be0c162, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncDirection: 0
-  syncMode: 0
-  syncInterval: 0
-  cameraTransform: {fileID: 3145713947665537247}
+  _componentIndexCache: 0
+  _addedNetworkObject: {fileID: 8243328903949181933}
+  _networkObjectCache: {fileID: 8243328903949181933}
+  mainCamera: {fileID: 3145713947665537240}
+  weaponCamera: {fileID: 6561139592808712477}
   ADSTransform: {fileID: 8097130628600661511}
   gunTransform: {fileID: 6386265145577265690}
   hipTransform: {fileID: 5970827921984978305}
@@ -296,13 +297,15 @@ MonoBehaviour:
   <IsNested>k__BackingField: 0
   <ComponentIndex>k__BackingField: 0
   <PredictedSpawn>k__BackingField: {fileID: 0}
-  _networkBehaviours: []
+  _networkBehaviours:
+  - {fileID: 5173662819689881520}
+  - {fileID: 4941691173304872186}
   <ParentNetworkObject>k__BackingField: {fileID: 0}
   <ChildNetworkObjects>k__BackingField: []
   SerializedTransformProperties:
-    Position: {x: 0, y: 0, z: 0}
-    Rotation: {x: 0, y: 0, z: 0, w: 0}
-    LocalScale: {x: 0, y: 0, z: 0}
+    Position: {x: 0, y: 1, z: 0}
+    Rotation: {x: 0, y: 0, z: 0, w: 1}
+    LocalScale: {x: 1, y: 1, z: 1}
   _isNetworked: 1
   _isGlobal: 0
   _initializeOrder: 0
@@ -312,7 +315,7 @@ MonoBehaviour:
   <SpawnableCollectionId>k__BackingField: 0
   _scenePathHash: 0
   <SceneId>k__BackingField: 0
-  <AssetPathHash>k__BackingField: 3437331707498519384
+  <AssetPathHash>k__BackingField: 14101666835978689608
 --- !u!114 &4941691173304872186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -325,9 +328,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2836e36774ca1c4bbbee976e17b649c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _componentIndexCache: 255
+  _componentIndexCache: 1
   _addedNetworkObject: {fileID: 8243328903949181933}
-  _networkObjectCache: {fileID: 0}
+  _networkObjectCache: {fileID: 8243328903949181933}
   _componentConfiguration: 0
   _synchronizeParent: 0
   _packing:
