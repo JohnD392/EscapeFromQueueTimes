@@ -32,7 +32,7 @@ public class Character : NetworkBehaviour {
 	public override void OnStartClient()
 	{
 		base.OnStartClient();
-		if (!base.IsOwner) {
+		if (!IsOwner) {
 			GetComponent<Character>().enabled = false;
 			GetComponent<PlayerInput>().enabled = false;
 			GetComponent<PlayerInputReader>().enabled = false;

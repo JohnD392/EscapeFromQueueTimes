@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class StandingState : ICharacterState {
     private Character character;
+    private Rigidbody rb;
     float maxSpeed;
 
     public StandingState(Character character) {
@@ -9,8 +10,12 @@ public class StandingState : ICharacterState {
         this.maxSpeed = character.maxSpeed;
     }
 
-    public virtual void OnEnterState(Character character) { }
+    public virtual void OnEnterState(Character character) {
+        rb = character.GetComponent<Rigidbody>();
+    }
+
     public virtual void OnExitState(Character character) { }
+    
     public virtual void Tick(Character character) {
         CheckADS();
         Vector2 moveVec = character.GetComponent<PlayerInputReader>().moveVec;
@@ -31,18 +36,30 @@ public class StandingState : ICharacterState {
     }
     public void SetVelocity(Character character, Vector3 inputVector) {
         Vector3 direction = inputVector.normalized;
-        Rigidbody rb = character.GetComponent<Rigidbody>();
-        Vector3 intendedVelocity = direction * maxSpeed;
-        if(Vector3.Distance(inputVector, Vector3.zero) < .05f) {
-            // The player has no input. Decelerate
-            rb.velocity += -rb.velocity * character.deceleration * Time.deltaTime;
-        } else {
-            rb.velocity += intendedVelocity * character.acceleration;
+        Vector3 horizontalVelocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+
+        if (direction == Vector3.zero) {
+            // Player is not issuing movement input
+            // Only apply deceleration to the player
+            Vector3 decelerationVec = -horizontalVelocity.normalized * character.deceleration;
+            // If the deceleration vector would flip the direction of movement, just set speed to zero
+            if (decelerationVec.magnitude > horizontalVelocity.magnitude) {
+                rb.velocity = new Vector3(0f, rb.velocity.y, 0f);
+                return;
+            }
+            // If not, decelerate normally
+            rb.velocity += decelerationVec;
+            return;
         }
-        rb.velocity = new Vector3(rb.velocity.x, CurrentFallSpeed(), rb.velocity.z);
+        // Player is issuing movement input
+        rb.velocity += inputVector * character.acceleration;
     }
 
-    private float CurrentFallSpeed() {
+    bool HasDirectionalInput(Vector3 inputVector) {
+        return Vector3.Distance(inputVector, Vector3.zero) > .1f;
+    }
+
+    float CurrentFallSpeed() {
         return character.GetComponent<Rigidbody>().velocity.y;
     }
 
@@ -50,7 +67,8 @@ public class StandingState : ICharacterState {
         Vector3 horizontalVelocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
         if (horizontalVelocity.magnitude > maxSpeed) rb.velocity = rb.velocity.normalized * maxSpeed;
     }
-    public void CheckSwapStates() {
+
+    void CheckSwapStates() {
         if(!character.IsGrounded()) character.GetComponent<PostureStateMachine>().ChangeState(PostureStateMachine.jumpState);
     }
 }
